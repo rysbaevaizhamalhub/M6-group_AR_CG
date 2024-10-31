@@ -1,16 +1,26 @@
-# Aizhamal Rysbaeva
-# Oct 29, 2024
+import random
 
-# program that will take a number (input) from the user and guess a randomly generated number.
-# Provide the user with an opportunity to guess higher or lower, depending on the randomly generated number.
-
-number = input("Please guess number between 1 and 10: ")
-for num in range(1, 11):
-    if num > 6:
-        print("Please guess lower")
-    elif num <= 6:
-        print("Well done, you guessed it!")
-    elif num == 0:
-        print("Process finished with exit code 0")
-    else:
-        print("Wrong guess, try again")
+def guessing_game():
+    guess_number = random.randint(1,50)
+    attempts = 0
+    print("Welcome to the guessing game. Are you ready!")
+    print ("I am thinking of a number from 1,50 can you guess it?")
+    while True:
+        try:
+            user_guess = int(input("Enter your guess: "))
+            attempts += 1
+            if user_guess == guess_number:
+                print (f"Hurray! you guessed the number {guess_number} in {attempts} attempts.")
+                break
+            else:
+                if user_guess < guess_number:
+                    print("Go higher try again")
+                else:
+                    print("Lower try again")
+        except ValueError:
+            print("Enter a valid number")
+while True:
+    guessing_game()
+    play_again = input("Do you wish to play again?") .strip() .lower()
+    if play_again != "yes":
+        break
